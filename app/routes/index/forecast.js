@@ -5,7 +5,7 @@ var ForecastRoute = Ember.Route.extend({
 
 		var geoLocation = this.modelFor('index');
 
-		var blah = Ember.$.getJSON('proxy.php?url=' + geoLocation.latitude + ',' + geoLocation.longitude);
+		var blah = Ember.$.getJSON('proxy.php?path=' + geoLocation.coords.latitude + ',' + geoLocation.coords.longitude);
 		console.log(blah);
 		return blah;
 		
