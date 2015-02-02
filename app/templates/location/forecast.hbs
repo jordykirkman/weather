@@ -1,10 +1,11 @@
-<div class="row">
+<div class="row panel">
 	<div class="large-3 small-7 columns">
-		<span {{bind-attr class=":icomoon :large model.currently.icon"}}></span> {{model.currently.temperature}}° {{model.currently.summary}}
+		<span {{bind-attr class=":icomoon :large model.currently.icon"}}></span> 
+		Currently {{model.currently.temperature}}° {{model.currently.summary}}
 	</div>
-	<div class="large-2 small-7 columns">
-	</div>
-	<div class="large-2 small-7 columns">
+	<div class="large-4 small-7 columns">
+		<h5>total rainfall: {{rainfall}}</h5>
+		<h5>average cloud cover: {{cloudCover}}</h5>
 	</div>
 </div>
 
@@ -22,14 +23,14 @@
 			<div class="row collapse">
 				<div class="large-7 columns">
 					<span class="icomoon small arrow-up"></span>
-					{{day.temperatureMin}}°
+					{{day.temperatureMax}}°
 				</div>
 			</div>
 
 			<div class="row collapse">
 				<div class="large-7 columns">
 					<span class="icomoon small arrow-down"></span>
-					{{day.temperatureMax}}°
+					{{day.temperatureMin}}°
 				</div>
 			</div>
 
