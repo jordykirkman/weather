@@ -10,8 +10,23 @@
 	</div>
 </div>
 
+<div class="row collapse">
+	<div class="large-2 small-3 columns">
+		<span class="prefix">weather date range</span>
+	</div>
+	<div class="large-2 small-4 columns">
+		{{view "date" type="date" valueBinding="startDate"}}
+	</div>
+	<div class="large-2 small-4 columns">
+		{{view "date" type="date" valueBinding="endDate"}}
+	</div>
+	<div class="large-1 small-3 columns">
+		<button class="button tiny postfix" {{action "getForecast"}}>get range</button>
+	</div>
+</div>
+
 <div class="row">
-	{{#each day in model.daily}}
+	{{#each day in sortedDays}}
 		<div class="large-1 small-7 columns">
 
 			<h4 class="subheader">{{day.time}}</h4>
