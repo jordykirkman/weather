@@ -9,7 +9,7 @@ Router.map(function() {
 
 		this.resource('index', {path: ""}, function(){
 			this.resource('location', {path: "/location/:_postalCode"}, function(){
-				this.route('forecast', {path: "/forecast/:coordinates"});
+				this.route('forecast', {path: "/forecast/:_coordinates"});
 			});
 		});
 

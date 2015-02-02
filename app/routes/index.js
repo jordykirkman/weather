@@ -12,24 +12,30 @@ var IndexRoute = Ember.Route.extend({
 		}
 
 		function routeWithPosition(position){
-			var geoModel = {coordinates: position.coords.latitude + "," + position.coords.longitude, postalCode: {postalCode: undefined}};
-			controller.set('model',  geoModel);
+			if(!model){
+				var geoModel = {_coordinates: position.coords.latitude + "," + position.coords.longitude, postalCode: {postalCode: undefined}};
+				controller.set('model',  geoModel);
 
-			Ember.$.getJSON('location.php?path=' + geoModel.coordinates).then(function(response){
-				var locationModel = {coordinates: geoModel.coordinates};
-				response.results[0].address_components.forEach(function(addressComponent){
-					if(addressComponent.types[0] === "postal_code"){
-						locationModel._postalCode = addressComponent.short_name;
-					}
-					locationModel[addressComponent.types[0]] = addressComponent.short_name;
+				// lets fetch the location object from google since the browser suppots geolocation
+				Ember.$.getJSON('location.php?path=' + geoModel._coordinates).then(function(response){
+					var locationModel = {_coordinates: geoModel._coordinates};
+					response.results[0].address_components.forEach(function(addressComponent){
+						// we want a few things specific here, lets specify some conditions
+						if(addressComponent.types[0] === "postal_code"){
+							locationModel._postalCode = addressComponent.short_name;
+						} else if(addressComponent.types[0] === "locality"){
+							locationModel.locality = addressComponent.long_name;
+						} else {
+							locationModel[addressComponent.types[0]] = addressComponent.short_name;
+						}
+					});
+					self.transitionTo('location', locationModel);
 				});
-				self.transitionTo('location', locationModel);
-			});
-			
+			}
 		}
 
 		function routeWithoutPosition(){
-			var geoModel = {coordinates: undefined, postalCode: {postalCode: undefined}};
+			var geoModel = {_coordinates: undefined, postalCode: {postalCode: undefined}};
 			controller.set('model', geoModel);
 		}
 		

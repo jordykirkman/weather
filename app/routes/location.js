@@ -8,7 +8,7 @@ var LocationRoute = Ember.Route.extend({
 		// then send to the google location api then to fetch our addess
 		return Ember.$.getJSON('lookup.php?path=' + params._postalCode).then(function(response){
 			var coordinates = response.results[0].geometry.location.lat + "," + response.results[0].geometry.location.lng;
-			var locationModel = {coordinates: coordinates};
+			var locationModel = {_coordinates: coordinates};
 			response.results[0].address_components.forEach(function(addressComponent){
 				// we want a few things specific here, lets specify some conditions
 				if(addressComponent.types[0] === "postal_code"){
@@ -26,7 +26,8 @@ var LocationRoute = Ember.Route.extend({
 	setupController: function(controller, model) {
 		this._super(controller, model);
 		// auto transition to the forcast route when this model has fulfilled
-		this.transitionTo('location.forecast', model.coordinates);
+		var today = moment().format('X');
+		this.transitionTo('location.forecast', model._coordinates);
 	}
 });
 
