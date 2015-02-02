@@ -73,12 +73,20 @@
 .icomoon.arrow-down:before {
     content: "\ea3e";
 }
+.icomoon.extralarge {
+  font-size: 8em;
+  display: block;
+}
 .icomoon.large {
   font-size: 4em;
   display: block;
 }
 .icomoon.small {
   font-size: .8em;
+}
+
+.ember-application {
+  padding-top: 3em;
 }
 
 meta.foundation-version {

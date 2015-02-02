@@ -1,11 +1,12 @@
 <div class="row panel">
 	<div class="large-3 small-7 columns">
-		<span {{bind-attr class=":icomoon :large model.currently.icon"}}></span> 
+		<span {{bind-attr class=":icomoon :extralarge model.currently.icon"}}></span> 
 		Currently {{model.currently.temperature}}° {{model.currently.summary}}
 	</div>
 	<div class="large-4 small-7 columns">
-		<h5>total rainfall: {{rainfall}}</h5>
-		<h5>average cloud cover: {{cloudCover}}</h5>
+		<h5>Forecast Summary</h5>
+		<h6 class="subheader">total rainfall: {{rainfall}} inches</h6>
+		<h6 class="subheader">average cloud cover: {{cloudCover}}%</h6>
 	</div>
 </div>
 
