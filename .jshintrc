@@ -3,7 +3,8 @@
     "document",
     "window",
     "-Promise",
-    "navigator"
+    "navigator",
+    "moment"
   ],
   "browser": true,
   "boss": true,
