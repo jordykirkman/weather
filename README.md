@@ -1,7 +1,10 @@
 # Weather
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is a small application that fetches your local forecast.
+You can change the forecast date range to find historical weather data for your location.
+You can also search for a new location by City, Zip or any locality keyword
+
+The app uses HTML5 Geolocation, [Google Geolocate API](https://developers.google.com/maps/documentation/geocoding/) and [Forecast.io](https://developer.forecast.io/docs/v2/).
 
 ## Prerequisites
 
