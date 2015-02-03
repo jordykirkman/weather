@@ -2,6 +2,8 @@ import Ember from "ember";
 
 var ForecastController = Ember.Controller.extend({
 
+	needs: ['location'],
+
 	sortedDays: function(){
 		return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
 			sortProperties: ['timestamp'],
@@ -32,10 +34,14 @@ var ForecastController = Ember.Controller.extend({
 	actions: {
 		getForecast: function(){
 			var self = this;
+			var locationController = this.get('controllers.location');
 			var startDay = moment(this.get('startDate'), 'YYYY-MM-DD');
 			var endDay = moment(this.get('endDate'), 'YYYY-MM-DD');
 			var difference = endDay.diff(startDay, 'days');
 			var currently = this.get('model.currently');
+			var coords = this.get('model')._coordinates;
+
+			locationController.set('loading', true);
 
 			var days = [];
 			for(var i=0; i<=difference; i++){
@@ -45,14 +51,16 @@ var ForecastController = Ember.Controller.extend({
 			}
 
 			if(difference >= 1){
-				Ember.$.getJSON('range.php?path=' + this.get('model')._coordinates + '&days=' + days.join('&')).then(function(forecast){
+				Ember.$.getJSON('range.php?path=' + coords + '&days=' + days.join('&')).then(function(forecast){
 					forecast.daily.removeObject(forecast.daily[0]);
 					forecast.daily.forEach(function(day){
 						day.timestamp = day.time;
-						day.time = moment(day.time, 'X').format('DD-MM-YY');
+						day.time = moment(day.time, 'X').format('ddd MM-YY');
 					});
 					forecast.currently = currently;
+					forecast._coordinates = coords;
 					self.set('model', forecast);
+					locationController.set('loading', false);
 				});
 			}
 		}

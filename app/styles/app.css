@@ -89,6 +89,16 @@
   padding-top: 3em;
 }
 
+img.loading {
+  position: absolute;
+  top: 30%;
+  left: 49%
+}
+
+img.loading-header {
+  height: 40px;
+}
+
 meta.foundation-version {
   font-family: "/5.5.0/"; }
 
@@ -257,8 +267,11 @@ select {
   width: 100%;
   float: left; }
 
-[class*="column"] + [class*="column"]:last-child {
-  float: right; }
+  [class*="column"] + [class*="column"]:nth-child(8) {
+  clear: both; }
+
+/*[class*="column"] + [class*="column"]:last-child {
+  float: right; }*/
 
 [class*="column"] + [class*="column"].end {
   float: left; }
