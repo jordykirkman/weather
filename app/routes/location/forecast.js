@@ -2,13 +2,13 @@ import Ember from "ember";
 
 var ForecastRoute = Ember.Route.extend({
 	model: function(params){
-		if(!this.get('controller.model')){
-			return new Ember.RSVP.Promise(function(resolve) {
-				Ember.$.getJSON('proxy.php?path=' + params._coordinates).then(function(forecast){
-					resolve({daily: forecast.daily.data, currently: forecast.currently, _coordinates: params._coordinates});
-				});
+
+		return new Ember.RSVP.Promise(function(resolve) {
+			Ember.$.getJSON('proxy.php?path=' + params._coordinates).then(function(forecast){
+				resolve({daily: forecast.daily.data, currently: forecast.currently, _coordinates: params._coordinates});
 			});
-		}
+		});
+
 	},
 	setupController: function(controller, model){
 		this._super(controller, model);

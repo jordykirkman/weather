@@ -12,7 +12,11 @@ var IndexRoute = Ember.Route.extend({
 		}
 
 		function routeWithPosition(position){
-			if(!model){
+
+			// the HTML5 geolocation object will update iteslf, if we try to use it as a mode, it re-fetches itself over and over
+			// so we need to set a flag to disallow it from triggering the location request more than once
+			if(controller.set('geolocationCaptured') === false){
+				controller.set('geolocationCaptured', true);
 				var geoModel = {_coordinates: position.coords.latitude + "," + position.coords.longitude, postalCode: {postalCode: undefined}};
 				controller.set('model',  geoModel);
 
