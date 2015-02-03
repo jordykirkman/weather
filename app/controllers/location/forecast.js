@@ -32,14 +32,15 @@ var ForecastController = Ember.Controller.extend({
 	actions: {
 		getForecast: function(){
 			var self = this;
-			var startDay = moment(this.get('startDate'));
-			var endDay = moment(this.get('endDate'));
+			var startDay = moment(this.get('startDate'), 'YYYY-MM-DD');
+			var endDay = moment(this.get('endDate'), 'YYYY-MM-DD');
 			var difference = endDay.diff(startDay, 'days');
 			var currently = this.get('model.currently');
 
 			var days = [];
 			for(var i=0; i<=difference; i++){
-				var day = "days[]=" + startDay.add(i, "days").format("X");
+
+				var day = "days[]=" + moment(startDay, 'YYYY-MM-DD').add(i, "d").format("X");
 				days.push(day);
 			}
 
@@ -48,7 +49,7 @@ var ForecastController = Ember.Controller.extend({
 					forecast.daily.removeObject(forecast.daily[0]);
 					forecast.daily.forEach(function(day){
 						day.timestamp = day.time;
-						day.time = moment(day.time, 'X').format('DD-MM-YYYY');
+						day.time = moment(day.time, 'X').format('DD-MM-YY');
 					});
 					forecast.currently = currently;
 					self.set('model', forecast);
