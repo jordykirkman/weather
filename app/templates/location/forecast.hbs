@@ -1,4 +1,4 @@
-<div class="row panel">
+<div class="row panel animated fadeIn">
 	<div class="large-3 small-7 columns">
 		<span {{bind-attr class=":icomoon :extralarge model.currently.icon"}}></span> 
 		Currently {{model.currently.temperature}}° {{model.currently.summary}}
@@ -10,7 +10,7 @@
 	</div>
 </div>
 
-<div class="row collapse">
+<div class="row collapse animated fadeIn">
 	<div class="large-2 small-3 columns">
 		<span class="prefix">weather date range</span>
 	</div>
@@ -27,7 +27,7 @@
 
 <div class="row">
 	{{#each day in sortedDays}}
-		<div class="large-1 small-7 columns">
+		<div class="large-1 small-7 columns animated fadeIn">
 
 			<h4 class="subheader">{{day.time}}</h4>
 			<div class="row collapse">
