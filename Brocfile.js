@@ -21,5 +21,5 @@ module.exports = app.toTree();
 
 
 minifyJS: {
-  enabled: false
+  enabled: true
 }
