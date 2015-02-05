@@ -1,9 +1,9 @@
 <div class="row panel animated fadeIn">
-	<div class="large-3 small-7 columns">
+	<div class="large-3 medium-3 small-7 columns">
 		<span {{bind-attr class=":icomoon :extralarge model.currently.icon"}}></span> 
 		Currently {{model.currently.temperature}}° {{model.currently.summary}}
 	</div>
-	<div class="large-4 small-7 columns">
+	<div class="large-4 medium-4 small-7 columns">
 		<h5>Forecast Summary</h5>
 		<h6 class="subheader">total rainfall: {{rainfall}} inches</h6>
 		<h6 class="subheader">average cloud cover: {{cloudCover}}%</h6>
@@ -11,23 +11,23 @@
 </div>
 
 <div class="row collapse animated fadeIn">
-	<div class="large-2 small-3 columns">
+	<div class="large-2 medium-2 small-3 columns">
 		<span class="prefix">weather date range</span>
 	</div>
-	<div class="large-2 small-4 columns">
+	<div class="large-2 medium-2 small-4 columns">
 		{{view "date" type="date" valueBinding="startDate"}}
 	</div>
-	<div class="large-2 small-4 columns">
+	<div class="large-2 medium-2 small-4 columns">
 		{{view "date" type="date" valueBinding="endDate"}}
 	</div>
-	<div class="large-1 small-3 columns">
+	<div class="large-1 medium-1 small-3 columns">
 		<button class="button tiny postfix" {{action "getForecast"}}>get range</button>
 	</div>
 </div>
 
 <div class="row">
 	{{#each day in sortedDays}}
-		<div class="large-1 small-7 columns animated fadeIn">
+		<div class="large-1 medium-1 small-7 columns animated fadeIn">
 
 			<h4 class="subheader">{{day.time}}</h4>
 			<div class="row collapse">

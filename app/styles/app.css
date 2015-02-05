@@ -58,7 +58,7 @@
   content: "\e606";
 }
 
-.icomoon.snow, .icomoon.sleet:before {
+.icomoon.snow:before, .icomoon.sleet:before {
   content: "\e607";
 }
 
@@ -86,7 +86,7 @@
 }
 
 .ember-application {
-  padding-top: 3em;
+  padding: 3em 2em 2em 2em;
 }
 
 img.loading {
