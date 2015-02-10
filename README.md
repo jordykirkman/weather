@@ -18,6 +18,8 @@ You will need the following things properly installed on your computer.
 * [Ember CLI](http://www.ember-cli.com/)
 * [PhantomJS](http://phantomjs.org/)
 
+* [PHP proxy repo for weather](https://github.com/jordykirkman/weather-proxy)
+
 ## Installation
 
 * `git clone <repository-url>` this repository
@@ -27,7 +29,7 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
-* `ember server`
+* `ember server --proxy http://127.0.0.1:8080` the proxy should point to an apache server pointed at the php repo, i use MAMP
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Code Generators
